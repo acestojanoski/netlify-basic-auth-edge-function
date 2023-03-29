@@ -9,6 +9,13 @@ function unauthorized() {
 
 export function handler(request: Request) {
   try {
+    const credentialsConfig = Deno.env.get('BASIC_AUTH_CREDENTIALS')
+
+    // Continue without authentication if no config is found
+    if (!credentialsConfig) {
+      return undefined
+    }
+
     const authorization = request.headers.get('authorization')
 
     if (!authorization) {
@@ -22,13 +29,6 @@ export function handler(request: Request) {
     }
 
     const [username, password] = atob(base64Credentials).split(':')
-
-    const credentialsConfig = Deno.env.get('BASIC_AUTH_CREDENTIALS')
-
-    // Continue without authentication if no config is found
-    if (!credentialsConfig) {
-      return undefined
-    }
 
     const allowedCombinations = credentialsConfig
       .split(' ')
