@@ -1,0 +1,17 @@
+{
+    "tasks": {
+        "check": "deno lint && deno check edge-function.ts mod.ts && deno fmt --check"
+    },
+    "fmt": {
+        "options": {
+            "singleQuote": true,
+            "semiColons": false
+        },
+        "files": {
+            "include": [
+                "mod.ts",
+                "edge-function.ts"
+            ]
+        }
+    }
+}
