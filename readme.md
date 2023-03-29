@@ -12,10 +12,12 @@ The Netlify free [pricing model](https://www.netlify.com/pricing/) does not incl
 
 1. Create `netlify/edge-functions/basic-auth.ts` file in your repository:
 
+Replace `LATEST_VERSION` with [the latest version](https://deno.land/x/netlify_basic_auth_edge_function).
+
 ```ts
 // netlify/edge-functions/basic-auth.ts
 
-export { handler as default } from 'https://raw.githubusercontent.com/acestojanoski/netlify-basic-auth-edge-function/main/mod.ts'
+export { handler as default } from 'https://deno.land/x/netlify_basic_auth_edge_function@LATEST_VERSION/mod.ts'
 ```
 
 2. Add the following part to your `netlify.toml` file-based configuration:
